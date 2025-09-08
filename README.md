@@ -4,7 +4,7 @@
 
 
 
-![Demo video](https://tuenl-my.sharepoint.com/:v:/g/personal/c_liu3_tue_nl/EW-fgdexIuhCpHPuLGXcXJgBLwRvJQMsI4Pll5rXXj7MwA?e=xryyFv)
+[Demo video](https://tuenl-my.sharepoint.com/:v:/g/personal/c_liu3_tue_nl/EW-fgdexIuhCpHPuLGXcXJgBLwRvJQMsI4Pll5rXXj7MwA?e=xryyFv)
 
 ## Overview 
 This repository contains instructions and files for setting up a virtualized 5G/6G testbed from our [paper](assets/OpenRIT6G_2025_VOTA.pdf). (Not completed yet)
