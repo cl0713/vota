@@ -7,7 +7,7 @@
 ![Demo video](assets/demo-vota.mp4)
 
 ## Overview 
-This repository contains instructions and files for setting up a virtualized 5G/6G testbed from our [paper](assets/OpenRIT6G_2025_VOTA.pdf). (Not completed yet)
+This repository contains instructions and files for setting up a virtualized 5G/6G testbed from our [paper](assets/OpenRIT6G_2025_VOTA.pdf).
 
 ## Our setup
 - Workstation for gNB and core network
@@ -74,14 +74,19 @@ sudo uhd_usrp_probe
 
 ### 3.2 Get Quectel-CM from your vendor and compile it
 ### 3.3 Config the modem using `minicom`
-
-
-
+```
+sudo minicom ttyUSB<X>
+AT+QMBNCFG="select","ROW_Commercial"
+at+cfun=1,1
+at+qnwprefcfg="mode_pref",nr5g
+at+qnwprefcfg="nr5g_band",78
+at+cgdcont=1,"IP","oai"
+```
 
 
 
 ## 4. Run the experiment
-### 4.1 Run gNB, list of config files we use [b78 40mhz](config/b78_40mhz.conf) [n77 100mhz](config/n77_100mhz.conf) 
+### 4.1 Run gNB, list of config files we use [n78 40mhz](config/b78_40mhz.conf), [n77 100mhz](config/n77_100mhz.conf) 
 ```
 sudo taskset -c <range of cores> nice -n -20 <path to oai>/cmake_targets/ran_build/build/nr-softmodem -O <path to config file> --gNBs.[0].min_rxtxtime 2 --sa --usrp-tx-thread-config 1 -E --continuous-tx
 ```
@@ -89,4 +94,14 @@ sudo taskset -c <range of cores> nice -n -20 <path to oai>/cmake_targets/ran_bui
 ### 4.2 Run Quectel UE: [script](scripts/quectel_at.py)
 ```
 sudo -E python3 quectel_at.py --interface <inetface_of_quectel> --port_location </dev/ttyUSBX>
+```
+
+# To cite our work
+```bibtex
+@inproceedings{vota,
+author = {Liu, Chang and Le, T. D. Khoa and Saini, Rahul and Joshi, Kishor C. and Exarchakos, George},
+title = {VOTA: Parallelizing 6G-RAN Experimentation with Virtualized Over-The-Air Workloads},
+year = {2025},
+booktitle = {Proceedings of the 1st Workshop on Open Research Infrastructures and Toolkits for 6G},
+}
 ```
